@@ -1,0 +1,14 @@
+#ifndef {CLASS}_HPP
+#define {CLASS}_HPP
+
+class {CLASS}
+{
+	private:
+
+	public:
+		{CLASS}(void);
+		~{CLASS}(void);
+		{CLASS}(const {CLASS}&other); 
+		{CLASS} & operator = (const {CLASS}&other);
+};
+#endif
