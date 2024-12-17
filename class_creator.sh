@@ -4,42 +4,40 @@
 # Author : tfrily
 # Github : https://github.com/mug4z
 
-if [ $# -ne 1 ]; then
+if [ $# -eq 1 ]; then
 	echo "Enter a class name"
 	exit
 fi
 
-class_name_uppercase=$(echo $1 | tr a-z A-Z)
 
-if [ -f "./$1.cpp" ] || [ -f "./src/$1.cpp" ] ; then
-	echo "File $1.cpp already exist"
-else
-	if [ -d "./src" ];then
-		cat /home/tfrily/scripts/bash/CPP_TEMPLATE/class_template_cpp > ./src/$1.cpp
-		sed -i -e "s/{CLASS}/$1/g" ./src/$1.cpp
+for var in "$@"
+do
+	class_name_uppercase=$(echo "$var" | tr '[:lower:]' '[:upper:]')
+	if [ -f "./$var.cpp" ] || [ -f "./src/$var.cpp" ] ; then
+		echo "File $var.cpp already exist"
 	else
-		cat /home/tfrily/scripts/bash/CPP_TEMPLATE/class_template_cpp > ./$1.cpp
-		sed -i -e "s/{CLASS}/$1/g" ./$1.cpp
+		if [ -d "./src" ];then
+			cat "$HOME"/CPP_TEMPLATE/class_template_cpp > ./src/"$var".cpp
+			sed -i -e "s/{CLASS}/$var/g" ./src/"$var".cpp
+		else
+			cat "$HOME"/CPP_TEMPLATE/class_template_cpp > ./"$var".cpp
+			sed -i -e "s/{CLASS}/$var/g" ./"$var".cpp
+		fi
 	fi
-fi
 
-if [ -f "./$1.hpp" ] || [ -f "./inc/$1.hpp" ] ; then
-	echo "File $1.hpp already exist"
-else
-	if [ -d "./inc" ];then
-		cat /home/tfrily/scripts/bash/CPP_TEMPLATE/class_template_hpp> ./inc/$1.hpp
-		sed -i -e "s/#ifndef {CLASS}/#ifndef $class_name_uppercase/g" ./inc/$1.hpp
-		sed -i -e "s/#define {CLASS}/#define $class_name_uppercase/g" ./inc/$1.hpp
-		sed -i -e "s/{CLASS}/$1/g" ./inc/$1.hpp
-
+	if [ -f "./$var.hpp" ] || [ -f "./inc/$var.hpp" ] ; then
+		echo "File $var.hpp already exist"
 	else
-		cat /home/tfrily/scripts/bash/CPP_TEMPLATE/class_template_hpp> ./$1.hpp
-		sed -i -e "s/#ifndef {CLASS}/#ifndef $class_name_uppercase/g" ./$1.hpp
-		sed -i -e "s/#define {CLASS}/#define $class_name_uppercase/g" ./$1.hpp
-		sed -i -e "s/{CLASS}/$1/g" ./$1.hpp
+		if [ -d "./inc" ];then
+			cat "$HOME"/CPP_TEMPLATE/class_template_hpp> ./inc/"$var".hpp
+			sed -i -e "s/#ifndef {CLASS}/#ifndef $class_name_uppercase/g" ./inc/"$var".hpp
+			sed -i -e "s/#define {CLASS}/#define $class_name_uppercase/g" ./inc/"$var".hpp
+			sed -i -e "s/{CLASS}/$var/g" ./inc/"$var".hpp
+		else
+			cat "$HOME"/CPP_TEMPLATE/class_template_hpp> ./"$var".hpp
+			sed -i -e "s/#ifndef {CLASS}/#ifndef $class_name_uppercase/g" ./"$var".hpp
+			sed -i -e "s/#define {CLASS}/#define $class_name_uppercase/g" ./"$var".hpp
+			sed -i -e "s/{CLASS}/$var/g" ./"$var".hpp
+		fi
 	fi
-fi
-
-
-
-
+done
