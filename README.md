@@ -29,6 +29,3 @@ chmod u+x class_creator.sh
 ./class_creator.sh <Class_name>
 ```
 Author : tfrily 
-
-
-Copy the cpp tempalte folder in you home.
