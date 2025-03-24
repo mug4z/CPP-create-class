@@ -1,0 +1,33 @@
+#include "Nameplaceholder.hpp"
+
+//  ==========| CONSTRUCTORS / DESTRUCTOR |==========
+{CLASS}::{CLASS}()
+{
+    //  DEFAULT
+}
+
+{CLASS}::{CLASS}(const {CLASS} &other)
+{
+    //  DEFAULT
+}
+
+{CLASS}::~{CLASS}()
+{
+    //  DEFAULT
+}
+
+//  =======| OPERATOR OVERLOADS |=======
+{CLASS} &{CLASS}::operator=(const {CLASS} &rhs)
+{
+    //  DEFAULT
+}
+
+//  ============| GETTERS |=============
+
+//  ============| SETTERS |=============
+
+//  ============| METHODS |=============
+
+//  ========| VIRTUAL METHODS |=========
+
+//  ======| EXTERNAL FUNCTIONS |========

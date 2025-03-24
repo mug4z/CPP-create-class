@@ -1,0 +1,15 @@
+#ifndef {CLASS}_HPP
+# define {CLASS}_HPP
+
+class {CLASS}
+{
+	public:
+		{CLASS}();
+		{CLASS}(const {CLASS} &other);
+		~{CLASS}();
+
+		{CLASS} &operator=(const {CLASS} &rhs);
+
+};
+
+#endif

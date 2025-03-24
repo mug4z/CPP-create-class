@@ -4,17 +4,17 @@
 # Author : tfrily
 # Github : https://github.com/mug4z
 
-if [ $# -eq 1 ]; then
+if [ $# -eq 0 ]; then
 	echo "Enter a class name"
 	exit
 fi
 
-template_cpp_path="./CPP-create-class/CPP_TEMPLATE/class_template_cpp"
-template_hpp_path="./CPP-create-class/CPP_TEMPLATE/class_template_hpp"
-class_name_uppercase=$(echo "$var" | tr '[:lower:]' '[:upper:]')
+template_cpp_path="$HOME/42Work/CPP-create-class/CPP_TEMPLATE/class_header"
+template_hpp_path="$HOME/42Work/CPP-create-class/CPP_TEMPLATE/class_source"
 
 for var in "$@"
 do
+class_name_uppercase=$(echo "$var" | tr '[:lower:]' '[:upper:]')
 	if [ -f "./$var.cpp" ] || [ -f "./src/$var.cpp" ] ; then
 		echo "File $var.cpp already exist"
 	else
